@@ -1,6 +1,6 @@
 {
 	"name": "@tsd/typescript",
-	"version": "0.0.0",
+	"version": "4.1.2",
 	"description": "TypeScript with some extras for type-checking.",
 	"license": "MIT",
 	"repository": "SamVerschueren/tsd-typescript",
@@ -16,7 +16,9 @@
 		"tsserver": "typescript/bin/tsserver"
 	},
 	"scripts": {
-		"test": "tsd"
+		"test": "tsd",
+		"upgrade": "node scripts/upgrade.js",
+		"check": "node scripts/version-check.js"
 	},
 	"files": [
 		"typescript.d.ts",
@@ -28,6 +30,11 @@
 		"typecheck"
 	],
 	"devDependencies": {
+		"got": "^11.8.0",
+		"gunzip-maybe": "^1.4.2",
+		"make-dir": "^3.1.0",
+		"redent": "^3.0.0",
+		"tar-stream": "^2.1.4",
 		"tsd": "^0.13.1"
 	},
 	"tsd": {

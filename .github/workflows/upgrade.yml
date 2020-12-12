@@ -1,0 +1,43 @@
+name: Upgrade
+on:
+  workflow_dispatch: null
+  schedule:
+    - cron: 0 0/6 * * *
+jobs:
+  Check:
+    outputs:
+      version: '${{ steps.version.outputs.version }}'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Check version
+        id: version
+        run: echo "::set-output name=version::$(npm run check --silent)"
+  Upgrade:
+    needs: Check
+    if: needs.Check.outputs.version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Install dependencies
+        run: npm install
+      - name: Upgrade
+        run: npm run upgrade ${{needs.Check.outputs.version}}
+      - name: Test
+        run: npm test
+      - name: Commit changes
+        run: |
+          git config --global user.name 'Sam Verschueren'
+          git config --global user.email 'sam.verschueren@gmail.com'
+          git commit -am "Upgrade TypeScript@${{needs.Check.outputs.version}}" || echo "No changes made"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{secrets.PAT}}
+
