@@ -7209,11 +7209,6 @@ declare namespace ts {
 	 */
 	export interface TypeChecker {
 		/**
-		 * Checks if type `a` is assignable to type `b`.
-		 */
-		isTypeAssignableTo(a: Type, b: Type): boolean;
-
-		/**
 		 * Two types are considered identical when
 		 *  - they are both the `any` type,
 		 *  - they are the same primitive type,
@@ -7225,7 +7220,55 @@ declare namespace ts {
 		 * This relationship is bidirectional.
 		 * See [here](https://github.com/microsoft/TypeScript/blob/v4.1.2/doc/spec-ARCHIVED.md#3.11.2) for more information.
 		 */
-		isTypeIdenticalTo(a: Type, b: Type): boolean;
+		isTypeIdenticalTo(source: Type, target: Type): boolean;
+
+		/**
+		 * S is a subtype of a type T, and T is a supertype of S, if S has no excess properties with respect
+		 * to T ([3.11.5](https://github.com/microsoft/TypeScript/blob/v4.1.2/doc/spec-ARCHIVED.md#3.11.5)) and one
+		 * of the following is true https://github.com/microsoft/TypeScript/blob/v4.1.2/doc/spec-ARCHIVED.md#3.11.3.
+		 */
+		isTypeSubtypeOf(source: Type, target: Type): boolean;
+
+		/**
+		 * Checks if type `a` is assignable to type `b`.
+		 */
+		isTypeAssignableTo(source: Type, target: Type): boolean;
+
+		/**
+		 * An object type S is considered to be derived from an object type T if
+		 *  - S is a union type and every constituent of S is derived from T,
+		 *  - T is a union type and S is derived from at least one constituent of T, or
+		 *  - S is a type variable with a base constraint that is derived from T,
+		 *  - T is one of the global types Object and Function and S is a subtype of T, or
+		 *  - T occurs directly or indirectly in an 'extends' clause of S.
+		 *
+		 * Note that this check ignores type parameters and only considers the inheritance hierarchy.
+		 */
+		isTypeDerivedFrom(source: Type, target: Type): boolean;
+
+		/**
+		 * This is *not* a bi-directional relationship.
+		 * If one needs to check both directions for comparability, use a second call to this function or 'areTypesComparable'.
+		 *
+		 * A type S is comparable to a type T if some (but not necessarily all) of the possible values of S are also possible values of T.
+		 * It is used to check following cases:
+		 *  - the types of the left and right sides of equality/inequality operators (`===`, `!==`, `==`, `!=`).
+		 *  - the types of `case` clause expressions and their respective `switch` expressions.
+		 *  - the type of an expression in a type assertion with the type being asserted.
+		 */
+		isTypeComparableTo(source: Type, target: Type): boolean;
+
+		/**
+		 * This is a bi-directional relationship.
+		 * If one needs to check one direction for comparability, use 'isTypeComparableTo'.
+		 *
+		 * A type S is comparable to a type T if some (but not necessarily all) of the possible values of S are also possible values of T.
+		 * It is used to check following cases:
+		 *  - the types of the left and right sides of equality/inequality operators (`===`, `!==`, `==`, `!=`).
+		 *  - the types of `case` clause expressions and their respective `switch` expressions.
+		 *  - the type of an expression in a type assertion with the type being asserted.
+		 */
+		areTypesComparable(source: Type, target: Type): boolean;
 	}
 }
 /** END TSD */
