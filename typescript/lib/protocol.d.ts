@@ -63,7 +63,8 @@ declare namespace ts.server.protocol {
         GetEditsForRefactor = "getEditsForRefactor",
         OrganizeImports = "organizeImports",
         GetEditsForFileRename = "getEditsForFileRename",
-        ConfigurePlugin = "configurePlugin"
+        ConfigurePlugin = "configurePlugin",
+        SelectionRange = "selectionRange"
     }
     /**
      * A TypeScript Server message
@@ -1025,6 +1026,20 @@ declare namespace ts.server.protocol {
         arguments: ConfigurePluginRequestArguments;
     }
     interface ConfigurePluginResponse extends Response {
+    }
+    interface SelectionRangeRequest extends FileRequest {
+        command: CommandTypes.SelectionRange;
+        arguments: SelectionRangeRequestArgs;
+    }
+    interface SelectionRangeRequestArgs extends FileRequestArgs {
+        locations: Location[];
+    }
+    interface SelectionRangeResponse extends Response {
+        body?: SelectionRange[];
+    }
+    interface SelectionRange {
+        textSpan: TextSpan;
+        parent?: SelectionRange;
     }
     /**
      *  Information found in an "open" request.
@@ -2411,6 +2426,9 @@ declare namespace ts.server.protocol {
         ES2015 = "ES2015",
         ES2016 = "ES2016",
         ES2017 = "ES2017",
+        ES2018 = "ES2018",
+        ES2019 = "ES2019",
+        ES2020 = "ES2020",
         ESNext = "ESNext"
     }
 }
