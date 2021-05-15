@@ -36,8 +36,16 @@ jobs:
           git config --global user.name 'Sam Verschueren'
           git config --global user.email 'sam.verschueren@gmail.com'
           git commit -am "Upgrade TypeScript@${{needs.Check.outputs.version}}" || echo "No changes made"
+      - name: Publish
+        run: |
+          npm version ${{needs.Check.outputs.version}}
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
+          npm publish
+          git reset HEAD~
+        env:
+          NPM_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{secrets.PAT}}
-
+          tags: true
