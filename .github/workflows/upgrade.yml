@@ -41,7 +41,7 @@ jobs:
           npm version ${{needs.Check.outputs.version}}
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
           npm publish
-          git reset HEAD~
+          git checkout -- .npmrc
         env:
           NPM_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       - name: Push changes
