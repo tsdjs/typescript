@@ -11,10 +11,6 @@
 	},
 	"main": "typescript/lib/typescript.js",
 	"types": "typescript/lib/typescript.d.ts",
-	"bin": {
-		"tsc": "typescript/bin/tsc",
-		"tsserver": "typescript/bin/tsserver"
-	},
 	"scripts": {
 		"test": "tsd && ava",
 		"upgrade": "node scripts/upgrade.js",

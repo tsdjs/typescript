@@ -2,7 +2,7 @@
 
 > TypeScript with some extras for type-checking.
 
-This is a drop-in replacement for [TypeScript](https://github.com/microsoft/TypeScript), including the binaries like `tsc` and `tsserver`. It exposes extra methods on the internal `TypeChecker` object.
+This is a drop-in replacement for [TypeScript](https://github.com/microsoft/TypeScript) meant for programmatic usage only. It does not expose the binaries like `tsc` and `tsserver` because it would override the TypeScript binaries of the project. It exposes extra methods on the internal `TypeChecker` object.
 
 
 ## Install
