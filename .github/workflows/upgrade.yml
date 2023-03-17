@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install dependencies
         run: npm install
       - name: Check version
         id: version
-        run: echo "::set-output name=version::$(npm run check --silent)"
+        run: echo "version=$(npm run check --silent)" >> $GITHUB_OUTPUT
   Upgrade:
     needs: Check
     if: needs.Check.outputs.version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
       - name: Install dependencies
