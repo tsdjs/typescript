@@ -10,7 +10,7 @@ module.exports = {
 			 * ([^\n]+): Match all characters expect \n before `var checker`.
 			 * (.*?): Match everything between `var checker = {` and `getNodeCount`
 			 */
-			from: /([^\n]+)var checker = {\r?\n(.*?)getNodeCount:/gms,
+			from: /([^\n]+)(?:var|const) checker = {\r?\n(.*?)getNodeCount:/gms,
 			to: `
 				$1var checker = {
 				$1	/** TSD */
