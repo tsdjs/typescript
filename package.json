@@ -1,6 +1,6 @@
 {
 	"name": "@tsd/typescript",
-	"version": "5.0.3",
+	"version": "5.0.4",
 	"description": "TypeScript with some extras for type-checking.",
 	"license": "MIT",
 	"repository": "SamVerschueren/tsd-typescript",
