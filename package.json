@@ -16,6 +16,9 @@
 		"upgrade": "node scripts/upgrade.js",
 		"check": "node scripts/version-check.js"
 	},
+    "engines": {
+        "node": ">=14.17"
+    },
 	"files": [
 		"typescript"
 	],
