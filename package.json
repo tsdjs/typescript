@@ -1,6 +1,6 @@
 {
 	"name": "@tsd/typescript",
-	"version": "5.1.3",
+	"version": "5.1.5",
 	"description": "TypeScript with some extras for type-checking.",
 	"license": "MIT",
 	"repository": "SamVerschueren/tsd-typescript",
@@ -16,9 +16,9 @@
 		"upgrade": "node scripts/upgrade.js",
 		"check": "node scripts/version-check.js"
 	},
-    "engines": {
-        "node": ">=14.17"
-    },
+	"engines": {
+		"node": ">=14.17"
+	},
 	"files": [
 		"typescript"
 	],
