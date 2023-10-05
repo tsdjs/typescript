@@ -1,4 +1,4 @@
-# @tsd/typescript ![CI](https://github.com/SamVerschueren/tsd-typescript/workflows/CI/badge.svg)
+# @tsd/typescript ![CI](https://github.com/tsdjs/typescript/workflows/CI/badge.svg)
 
 > TypeScript with some extras for type-checking.
 
@@ -26,4 +26,4 @@ This package is just TypeScript with some private methods exposed that [tsd](htt
 
 ## Related
 
-- [tsd](https://github.com/SamVerschueren/tsd) - Check TypeScript type definitions
+- [tsd](https://github.com/tsdjs/tsd) - Check TypeScript type definitions

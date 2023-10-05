@@ -3,7 +3,7 @@
 	"version": "5.2.2",
 	"description": "TypeScript with some extras for type-checking.",
 	"license": "MIT",
-	"repository": "SamVerschueren/tsd-typescript",
+	"repository": "tsdjs/typescript",
 	"author": {
 		"name": "Sam Verschueren",
 		"email": "sam.verschueren@gmail.com",
