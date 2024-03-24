@@ -16,7 +16,6 @@ module.exports = {
 				$1	/** TSD */
 				$1	isTypeIdenticalTo: isTypeIdenticalTo,
 				$1	isTypeSubtypeOf: isTypeSubtypeOf,
-				$1	isTypeAssignableTo: isTypeAssignableTo,
 				$1	isTypeDerivedFrom: isTypeDerivedFrom,
 				$1	isTypeComparableTo: isTypeComparableTo,
 				$1	areTypesComparable: areTypesComparable,
@@ -56,11 +55,6 @@ module.exports = {
 						 * of the following is true https://github.com/microsoft/TypeScript/blob/v4.1.2/doc/spec-ARCHIVED.md#3.11.3.
 						 */
 						isTypeSubtypeOf(source: Type, target: Type): boolean;
-
-						/**
-						 * Checks if type \`a\` is assignable to type \`b\`.
-						 */
-						isTypeAssignableTo(source: Type, target: Type): boolean;
 
 						/**
 						 * An object type S is considered to be derived from an object type T if
