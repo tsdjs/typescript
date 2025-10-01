@@ -1,6 +1,6 @@
 {
 	"name": "@tsd/typescript",
-	"version": "5.9.2",
+	"version": "5.9.3",
 	"description": "TypeScript with some extras for type-checking.",
 	"license": "MIT",
 	"repository": "tsdjs/typescript",
