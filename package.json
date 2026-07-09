@@ -33,6 +33,7 @@
 		"gunzip-maybe": "^1.4.2",
 		"make-dir": "^3.1.0",
 		"redent": "^3.0.0",
+		"semver": "^7.8.5",
 		"tar-stream": "^2.2.0",
 		"tsd": "^0.27.0"
 	},
